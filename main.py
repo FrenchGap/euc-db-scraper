@@ -11,18 +11,11 @@ def main():
   viewStateGenerator = ""
   eventValidation = ""
 
-  page_count = 3
+  page_count = 5
   for i in range(1, page_count+1):
     print(i)
     data, viewState, viewStateGenerator, eventValidation = pageDataRetriever(i, eventTarget, eventArgument, viewState, viewStateGenerator, eventValidation)
-    soup = BeautifulSoup(data, features="html.parser")
-    art_one = soup.find_all('tr', {'class': 'ap-list-row'})
-    for a in art_one:
-      icao_designator = a.find('h3', {'class': 'ap-list-item-icao'}).findChild('a').string
-      acft_names = a.find('p', {'class': 'ap-list-item-name'}).text.strip().split()
-      acft_name = " ".join(acft_names)
-      print(icao_designator)
-      print(acft_name)
+    scraper(data)
 
   pass
 
@@ -55,6 +48,17 @@ def scraper(page_data):
   This function retrieves the necessary data with scraping from each page
   Data is fed to the function from the pageDataRetriever function above
   '''
+  soup = BeautifulSoup(page_data, features="html.parser")
+  art_one = soup.find_all('tr', {'class': 'ap-list-row'})
+  art_two = soup.find_all('tr', {'class': 'ap-list-row-alternate'})
+  for a in art_one:
+    icao_designator = a.find('h3', {'class': 'ap-list-item-icao'}).findChild('a').string
+    acft_names = a.find('p', {'class': 'ap-list-item-name'}).text.strip().split()
+    acft_name = " ".join(acft_names)
+    print(icao_designator)
+    print(acft_name)
+
+
   pass
 
 main()
