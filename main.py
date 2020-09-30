@@ -11,7 +11,7 @@ def main():
   viewStateGenerator = ""
   eventValidation = ""
 
-  page_count = 5
+  page_count = 1
   for i in range(1, page_count+1):
     print(i)
     data, viewState, viewStateGenerator, eventValidation = pageDataRetriever(i, eventTarget, eventArgument, viewState, viewStateGenerator, eventValidation)
@@ -57,6 +57,16 @@ def scraper(page_data):
     acft_name = " ".join(acft_names)
     print(icao_designator)
     print(acft_name)
+
+    first_row = a.find_all('div', {'class': 'col-3'})
+    for fr in first_row:
+      print(fr.findChild('p').text)
+    
+    second_row = a.find_all('div', {'class': 'col'})
+    for sr in second_row:
+      all_data = sr.find_all('p')
+      for ad in all_data:
+        print(ad.text)
 
 
   pass
