@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-import requests, json
+import requests, json, time
 
 def main():
   '''
@@ -13,11 +13,12 @@ def main():
 
   final_list = []
 
-  page_count = 2
+  page_count = 38
   for i in range(1, page_count+1):
     print(i)
     data, viewState, viewStateGenerator, eventValidation = pageDataRetriever(i, eventTarget, eventArgument, viewState, viewStateGenerator, eventValidation)
     final_list = scraper(data, final_list)
+    time.sleep(1)
 
   return final_list
 
@@ -176,3 +177,6 @@ def scraper(page_data, final_list):
 
 data = main()
 print(data)
+with open('output.json', 'w') as file:
+  print(data, file=file)
+  file.close()
