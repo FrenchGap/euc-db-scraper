@@ -63,39 +63,39 @@ def scraper(page_data, final_list):
     img_url = a.find("img", {"class": "float-left ap-list-item-photo"})["src"]
 
     first_row = a.find_all("div", {"class": "col-3"})
-    acft_type = first_row[0].findChild("p").text
-    acft_wtc = first_row[1].findChild("p").text
-    acft_recat = first_row[2].findChild("p").text
-    acft_apc = first_row[3].findChild("p").text
+    acft_type = "".join(first_row[0].findChild("p").text.split(" ")[1:])
+    acft_wtc = "".join(first_row[1].findChild("p").text.split(" ")[1:])
+    acft_recat = "".join(first_row[2].findChild("p").text.split(" ")[1:])
+    acft_apc = "".join(first_row[3].findChild("p").text.split(" ")[1:])
     
     second_row = a.find_all("div", {"class": "col"})
     for sr in second_row:
       if "Initial" in sr.find_all("p")[0].text:
         initial_data = {
-          "ROC": sr.find_all("p")[1].text,
-          "IAS": sr.find_all("p")[2].text,
+          "ROC": "".join(sr.find_all("p")[1].text.split(" ")[1:]),
+          "IAS": "".join(sr.find_all("p")[2].text.split(" ")[1:]),
         }
       if "150" in sr.find_all("p")[0].text:
         fl150_data = {
-          "ROC": sr.find_all("p")[1].text,
-          "IAS": sr.find_all("p")[2].text,
+          "ROC": "".join(sr.find_all("p")[1].text.split(" ")[1:]),
+          "IAS": "".join(sr.find_all("p")[2].text.split(" ")[1:]),
         }
       if "240" in sr.find_all("p")[0].text:
         fl240_data = {
-          "ROC": sr.find_all("p")[1].text,
-          "IAS": sr.find_all("p")[2].text,
+          "ROC": "".join(sr.find_all("p")[1].text.split(" ")[1:]),
+          "IAS": "".join(sr.find_all("p")[2].text.split(" ")[1:]),
         }
       if "Cruise" in sr.find_all("p")[0].text:
         cruise_data = {
-          "ceiling": sr.find_all("p")[1].text,
-          "ROC": sr.find_all("p")[2].text,
-          "TAS": sr.find_all("p")[3].text,
-          "mach": sr.find_all("p")[4].text,
+          "ceiling": "".join(sr.find_all("p")[1].text.split(" ")[1:]),
+          "ROC": "".join(sr.find_all("p")[2].text.split(" ")[1:]),
+          "TAS": "".join(sr.find_all("p")[3].text.split(" ")[1:]),
+          "mach": "".join(sr.find_all("p")[4].text.split(" ")[1:]),
         }
       if "Approach" in sr.find_all("p")[0].text:
         app_data = {
-          "IAS": sr.find_all("p")[1].text,
-          "MCS": sr.find_all("p")[2].text,
+          "IAS": "".join(sr.find_all("p")[1].text.split(" ")[1:]),
+          "MCS": "".join(sr.find_all("p")[2].text.split(" ")[1:]),
         }
     
     acft_data = {
@@ -122,39 +122,39 @@ def scraper(page_data, final_list):
     img_url = a.find("img", {"class": "float-left ap-list-item-photo"})["src"]
 
     first_row = a.find_all("div", {"class": "col-3"})
-    acft_type = first_row[0].findChild("p").text
-    acft_wtc = first_row[1].findChild("p").text
-    acft_recat = first_row[2].findChild("p").text
-    acft_apc = first_row[3].findChild("p").text
+    acft_type = "".join(first_row[0].findChild("p").text.split(" ")[1:])
+    acft_wtc = "".join(first_row[1].findChild("p").text.split(" ")[1:])
+    acft_recat = "".join(first_row[2].findChild("p").text.split(" ")[1:])
+    acft_apc = "".join(first_row[3].findChild("p").text.split(" ")[1:])
     
     second_row = a.find_all("div", {"class": "col"})
     for sr in second_row:
       if "Initial" in sr.find_all("p")[0].text:
         initial_data = {
-          "ROC": sr.find_all("p")[1].text,
-          "IAS": sr.find_all("p")[2].text,
+          "ROC": "".join(sr.find_all("p")[1].text.split(" ")[1:]),
+          "IAS": "".join(sr.find_all("p")[2].text.split(" ")[1:]),
         }
       if "150" in sr.find_all("p")[0].text:
         fl150_data = {
-          "ROC": sr.find_all("p")[1].text,
-          "IAS": sr.find_all("p")[2].text,
+          "ROC": "".join(sr.find_all("p")[1].text.split(" ")[1:]),
+          "IAS": "".join(sr.find_all("p")[2].text.split(" ")[1:]),
         }
       if "240" in sr.find_all("p")[0].text:
         fl240_data = {
-          "ROC": sr.find_all("p")[1].text,
-          "IAS": sr.find_all("p")[2].text,
+          "ROC": "".join(sr.find_all("p")[1].text.split(" ")[1:]),
+          "IAS": "".join(sr.find_all("p")[2].text.split(" ")[1:]),
         }
       if "Cruise" in sr.find_all("p")[0].text:
         cruise_data = {
-          "ceiling": sr.find_all("p")[1].text,
-          "ROC": sr.find_all("p")[2].text,
-          "TAS": sr.find_all("p")[3].text,
-          "mach": sr.find_all("p")[4].text,
+          "ceiling": "".join(sr.find_all("p")[1].text.split(" ")[1:]),
+          "ROC": "".join(sr.find_all("p")[2].text.split(" ")[1:]),
+          "TAS": "".join(sr.find_all("p")[3].text.split(" ")[1:]),
+          "mach": "".join(sr.find_all("p")[4].text.split(" ")[1:]),
         }
       if "Approach" in sr.find_all("p")[0].text:
         app_data = {
-          "IAS": sr.find_all("p")[1].text,
-          "MCS": sr.find_all("p")[2].text,
+          "IAS": "".join(sr.find_all("p")[1].text.split(" ")[1:]),
+          "MCS": "".join(sr.find_all("p")[2].text.split(" ")[1:]),
         }
     
     acft_data = {
